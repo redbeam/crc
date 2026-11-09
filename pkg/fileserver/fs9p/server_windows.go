@@ -3,9 +3,11 @@
 package fs9p
 
 import (
+	"errors"
 	"fmt"
 	"net"
 
+	"github.com/Microsoft/go-winio"
 	"github.com/linuxkit/virtsock/pkg/hvsock"
 )
 
@@ -26,4 +28,11 @@ func GetHvsockListener(hvsockGUID string) (net.Listener, error) {
 	}
 
 	return listener, nil
+}
+
+// isListenerClosedError reports whether err is the error returned by Accept()
+// after the listener has been closed. go-winio hvsock listeners return
+// winio.ErrFileClosed instead of net.ErrClosed.
+func isListenerClosedError(err error) bool {
+	return errors.Is(err, net.ErrClosed) || errors.Is(err, winio.ErrFileClosed)
 }

@@ -1,12 +1,10 @@
 package fs9p
 
 import (
-	"errors"
 	"fmt"
 	"net"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/DeedleFake/p9"
 	"github.com/DeedleFake/p9/proto"
@@ -89,9 +87,8 @@ func (s *Server) Stop() error {
 // WaitForError from a running server.
 func (s *Server) WaitForError() error {
 	err := <-s.ErrChan
-	// captures "accept tcp: endpoint is in invalid state" errors on exit
-	var opErr *net.OpError
-	if errors.As(err, &opErr) && strings.Contains(opErr.Error(), "endpoint is in invalid state") {
+	// the listener being closed by Stop() is a normal shutdown, not an error
+	if isListenerClosedError(err) {
 		return nil
 	}
 	return err
