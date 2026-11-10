@@ -28,7 +28,6 @@ require (
 	github.com/klauspost/compress v1.20.3
 	github.com/klauspost/cpuid/v2 v2.4.2
 	github.com/kofalt/go-memoize v0.0.0-20220914132407-0b5d6a304579
-	github.com/linuxkit/virtsock v0.0.0-20220523201153-1a23e78aa7a2
 	github.com/mattn/go-colorable v0.1.16
 	github.com/mdlayher/vsock v1.4.0
 	github.com/onsi/ginkgo/v2 v2.34.0
@@ -126,6 +125,7 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
 	github.com/klauspost/pgzip v1.2.7 // indirect
+	github.com/linuxkit/virtsock v0.0.0-20220523201153-1a23e78aa7a2 // indirect
 	github.com/lufia/plan9stats v0.0.0-20240909124753-873cd0166683 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
